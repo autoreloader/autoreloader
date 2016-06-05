@@ -6,9 +6,9 @@ Automatically reload chrome tabs if files changes
 	
 	- Run setup.exe
 
-**Step 2:** Install the chrome extension 
+**Step 2:** Install the [chrome extension](https://chrome.google.com/webstore/detail/innoeeijgleieecngfliphpjchmcobok)
 
-	- Install "autoreloader" on chrome store and install extension from https://chrome.google.com/webstore/detail/innoeeijgleieecngfliphpjchmcobok
+	- Install "autoreloader" on chrome store and install extension
 	
 **Step 3:** Add folders that you would like to monitor using the "add directory" button.
 
@@ -21,4 +21,6 @@ here:
 https://github.com/autoreloader/autoreloader
 
 *Pull requests are always welcome!*
+
+P.S. The default server/client port is 2907 (so it must be unblocked in your Windows firewall)
 
