@@ -1,4 +1,4 @@
-## Autoreloader v0.0.1
+## Autoreloader v0.0.1 (Windows only)
 
 Automatically reload chrome tabs if files changes
 
