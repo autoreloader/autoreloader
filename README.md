@@ -6,7 +6,7 @@ Automatically reload chrome tabs if files changes
 	
 	- Run setup.exe
 
-**Step 2:** Install the [chrome extension](https://chrome.google.com/webstore/detail/innoeeijgleieecngfliphpjchmcobok)
+**Step 2:** Install the [chrome extension](https://chrome.google.com/webstore/detail/autoreloader-reload-tab-o/innoeeijgleieecngfliphpjchmcobok?hl=en-US)
 
 	- Install "autoreloader" on chrome store and install extension
 	
