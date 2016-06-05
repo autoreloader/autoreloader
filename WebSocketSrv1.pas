@@ -9,7 +9,8 @@ uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   OverbyteIcsIniFiles, StdCtrls, ExtCtrls, DirectoryMonitor,
   OverbyteIcsWSocket, OverbyteIcsWSocketS, OverbyteIcsWndControl,
-  Socket, interfaces, inifiles, FileCtrl, Dialogs, CoolTrayIcon, Menus;
+  Socket, interfaces, inifiles, FileCtrl, Dialogs, CoolTrayIcon, Menus,
+  MultiInst;
 
 type
 
@@ -28,6 +29,7 @@ type
     Exit1: TMenuItem;
     N1: TMenuItem;
     Exit2: TMenuItem;
+    MultiInstance1: TMultiInstance;
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure WSocketServer1ClientConnect(Sender: TObject;

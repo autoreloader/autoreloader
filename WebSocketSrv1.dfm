@@ -171,4 +171,9 @@ object WebSocketForm: TWebSocketForm
       OnClick = Exit2Click
     end
   end
+  object MultiInstance1: TMultiInstance
+    AppId = 2
+    Left = 160
+    Top = 256
+  end
 end

@@ -1,9 +1,9 @@
 {
-  "name": "Autoreloader: Reload webpage when file is changed (Windows only)",
+  "name": "Autoreloader: Reload tab on file change (Win)",
   "version": "0.0.1",
   "manifest_version": 2,
-  "description": "Monitor files on your hard disk and reload pages automatically",
-  "homepage_url": "http://www.hojibe.com",
+  "description": "(Windows only) Monitor files on your hard disk and reload pages automatically",
+  "homepage_url": "https://github.com/autoreloader/autoreloader",
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
