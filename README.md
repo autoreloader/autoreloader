@@ -2,9 +2,8 @@
 
 Automatically reload chrome tabs if files changes
 
-**Step 1:** Install the file monitor server 
+**Step 1:** Install the file monitor server (Download [setup.exe](https://github.com/autoreloader/autoreloader/blob/master/Setup.exe?raw=true)) 
 	
-	- Download setup.exe from https://github.com/autoreloader/autoreloader/blob/master/Setup.exe?raw=true
 	- Run setup.exe
 
 **Step 2:** Install the chrome extension 
