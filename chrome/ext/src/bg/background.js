@@ -63,4 +63,8 @@
             console.log("Failed to open socket: ", e);
         }
     }
+
+    chrome.runtime.onInstalled.addListener(function (details) {
+        chrome.tabs.create({"url": "https://github.com/autoreloader/autoreloader", "selected": true});
+    });
 })();
