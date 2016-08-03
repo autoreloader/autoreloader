@@ -58,6 +58,7 @@ type
 
     procedure DirChange(Sender: TObject; Action: TDirectoryAction; FileName: string);
     procedure Add(Dir: string);
+    procedure SaveConfig;
 
     procedure ClientBgException(Sender: TObject; E: Exception; var CanClose: Boolean);
     procedure WebSocketConnected(Sender: TObject; con: IWebSocketConnection);
@@ -131,8 +132,20 @@ end;
 {* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *}
 
 procedure TWebSocketForm.Display(Msg: string);
+var
+  I: Integer;
 begin
-  DisplayMemo.Lines.Add(Msg);
+  DisplayMemo.Lines.BeginUpdate;
+  try
+    if DisplayMemo.Lines.Count > 200 then begin
+      for I := 1 to 50 do
+        DisplayMemo.Lines.Delete(0);
+    end;
+    DisplayMemo.Lines.Add(Msg);
+  finally
+    DisplayMemo.Lines.EndUpdate;
+    SendMessage(DisplayMemo.Handle, EM_SCROLLCARET, 0, 0);
+  end;
 end;
 
 
@@ -205,6 +218,8 @@ procedure TWebSocketForm.WSocketServer1ClientDisconnect(
   Client: TWSocketClient;
   Error: Word);
 begin
+  theCon := nil;
+
   with Client as TTcpSrvClient do begin
     Display('Client disconnecting: ' + PeerAddr + '   ' +
       'Duration: ' + FormatDateTime('hh:nn:ss',
@@ -263,6 +278,8 @@ begin
     dirs.Items.add(s);
     add(s);
   end;
+
+  SaveConfig;
 end;
 
 procedure TWebSocketForm.DirChange(Sender: TObject; Action: TDirectoryAction; FileName: string);
@@ -304,6 +321,12 @@ begin
 end;
 
 procedure TWebSocketForm.FormDestroy(Sender: TObject);
+begin
+  SaveConfig;
+  WSocketServer1.Close;
+end;
+
+procedure TWebSocketForm.SaveConfig;
 var
   i: integer;
   ini: tinifile;
@@ -322,8 +345,6 @@ begin
       FDirMons[i].Stop;
       FDirMons[i].Free;
     end;
-
-  WSocketServer1.Close;
 end;
 
 procedure TWebSocketForm.dirsClick(Sender: TObject);
@@ -348,6 +369,8 @@ begin
   end;
 
   dirs.Items.Delete(dirs.itemindex);
+
+  SaveConfig;
 end;
 
 procedure TWebSocketForm.changeTimerTimer(Sender: TObject);

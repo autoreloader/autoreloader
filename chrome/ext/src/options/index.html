@@ -1,9 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Options</title>
+	<style>
+		html, body {
+			font-family: Arial;
+		}
+		
+		fieldset, button {
+			max-width: 600px;
+			border: 1px solid #ccc;
+		}
+		
+		button {
+			font-weight: bold;
+		}
+	</style>
 </head>
-<body>
 
+<body>
+	<h3>Autoreloader options</h3>
+
+	<form action="" method="POST">
+		<fieldset>
+			<legend>Domains to reload:</legend>
+			
+			<p><textarea id="domains" rows="5" cols="80" placeholder="Enter domains as regex (e.g. test\.com|best\.com|foo\.bar)"></textarea></p>
+			
+			<p><label><input type="checkbox" id="active" /> Active window only</label></p>
+			
+			<hr size="1" noshade>
+				
+			<p><button type="submit">Save changes</button></p>
+		</fieldset>
+	</form>
 </body>
+
+<script src="options.js"></script>
+
+	
 </html>

@@ -151,7 +151,7 @@ object WebSocketForm: TWebSocketForm
   end
   object changeTimer: TTimer
     Enabled = False
-    Interval = 100
+    Interval = 350
     OnTimer = changeTimerTimer
     Left = 80
     Top = 256
@@ -170,5 +170,10 @@ object WebSocketForm: TWebSocketForm
       Caption = 'Exit'
       OnClick = Exit2Click
     end
+  end
+  object MultiInstance1: TMultiInstance
+    AppId = 2
+    Left = 160
+    Top = 256
   end
 end

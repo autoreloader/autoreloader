@@ -151,7 +151,6 @@ object WebSocketForm: TWebSocketForm
   end
   object changeTimer: TTimer
     Enabled = False
-    Interval = 100
     OnTimer = changeTimerTimer
     Left = 80
     Top = 256

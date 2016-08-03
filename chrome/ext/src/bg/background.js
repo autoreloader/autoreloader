@@ -34,14 +34,36 @@
 
             ws.onmessage = function (evt) {
                 var msg = evt.data;
+				var getHost = function(href) {
+					var l = document.createElement("a");
+					l.href = href;
+					return l.hostname;
+				};
+				
                 console.log("Message is received: ", msg);
 
                 if (msg == 'change') {
                     clearTimeout(reloadTimeout);
                     reloadTimeout = setTimeout(function () {
-                        chrome.tabs.executeScript({
-                            code: 'location.reload()'
-                        });
+						count++;
+						
+						chrome.storage.sync.get(null, function(value) {
+							if (value && value.domains) {
+								var regex = new RegExp(value.domains.split("\n").join('|'), 'i');
+								var reloadTabs = function(tabs) {
+									for ( var i = 0; i < tabs.length; i++ ) {									
+										if (regex.test(getHost(tabs[i].url))) {
+											chrome.tabs.executeScript(tabs[i].tabId, {code: 'location.reload()'});
+										}
+									}
+								};
+															
+								chrome.tabs.query(value.active === true ? {active: true} : {}, reloadTabs);
+							} else {
+								chrome.tabs.executeScript({code: 'location.reload()'});
+							}
+						});
+						update(true);
                     }, 250);
                 }
             };
@@ -53,7 +75,7 @@
             };
 
             ws.onerror = function (e) {
-                console.log("errow: ", e);
+                console.log("error: ", e);
             }
         } catch (e) {
             wsOpen = false;
@@ -65,6 +87,6 @@
     }
 
     chrome.runtime.onInstalled.addListener(function (details) {
-        chrome.tabs.create({"url": "https://github.com/autoreloader/autoreloader", "selected": true});
+        //chrome.tabs.create({"url": "https://github.com/autoreloader/autoreloader#readme", "selected": true});
     });
 })();
